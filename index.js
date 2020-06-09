@@ -149,8 +149,6 @@ function variableInterestRateNightmare(P, I, N){ //we declare our function and p
         }
     }
     
-    variableInterestRateNightmare(200000,0.04,30)
-
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
@@ -163,7 +161,6 @@ function variableInterestRateNightmare(P, I, N){ //we declare our function and p
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
-
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
