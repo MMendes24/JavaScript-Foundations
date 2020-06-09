@@ -60,7 +60,7 @@ function mortgageCalculator(){
     
     monthlyRate = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1)
     
-    return console.log(name,"your monthly payment is",monthlyRate)
+    return console.log(name,"your monthly payment is",monthlyRate.toFixed(1))
     }
     
     mortgageCalculator()
@@ -82,7 +82,7 @@ function mortgageCalculatorAgain(P, I, N){
     
     monthlyRate = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1)
     
-    return console.log(name,"your monthly payment is",monthlyRate)
+    return console.log(name,"your monthly payment is",monthlyRate.toFixed(1))
     }
     
 
@@ -96,23 +96,23 @@ Then, add control flow within your function such that IF creditScore is above 74
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
 
-function mortgageCalculatorCredit(P, I, N, CS){
-    const principal = P
-    const monthlyInterestRate = I/12
-    const periods = N*12
-    const name = "Mars"
-    
-    monthlyRate = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1)
-    
-    if (CS > 739) {
-      return console.log(name,"your monthly payment is",monthlyRate * 0.95) 
-    } else if (CS < 660) {
-      return console.log(name,"your monthly payment is",monthlyRate * 1.05)  
-    } else {
-      return console.log(name,"your monthly payment is",monthlyRate)
-    }
-    
-    }
+        function mortgageCalculatorCredit(P, I, N, CS){
+            const principal = P
+            const monthlyInterestRate = I/12
+            const periods = N*12
+            const name = "Mars"
+            
+            monthlyRate = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1)
+            
+            if (CS > 739) {
+            return console.log(name,"your monthly payment is",monthlyRate * 0.95) 
+            } else if (CS < 660) {
+            return console.log(name,"your monthly payment is",monthlyRate * 1.05)  
+            } else {
+            return console.log(name,"your monthly payment is",monthlyRate)
+            }
+            
+            }
 
 // 🏡 Task 6: Loops
 /* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
@@ -131,13 +131,16 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 function variableInterestRateNightmare(P, I, N){ //we declare our function and parameters
-    let InterestRate = I - .02 // we leave this variable outside so it's not getting recalculated by the for loop
+    let InterestRate = I - .02 // we leave this variable outside so it's not getting recalculated by the for loop. This was the tricky part because we needed to see lower interest 
+    // rates AND higher ones in our for loop. A way to do this is to subtract it off the bat.
     
     for (let i = 0; i < 10; i++) { // the start of the for loop. We have made it run 10 times.
-        let monthlyVary = InterestRate/12 // our for loop needs to know the monthly interest
-        let principal = P // connecting the variable to the parameter
-        let periods = N*12 // connecting the variable to the parameter
-        const name = "Mars" // my name
+        let monthlyVary = InterestRate/12 // our for loop needs to know the monthly interest to plug into the new formula. Each time it is: taking the argument from when the function 
+        // was invoked, then subtracting .02, then dividing that number by 12 (because there are twelve months in a year), then taking the final number and putting it in the formula. 
+        // This is what then gets incremented back up by +0.05 at the end of the function.
+        let principal = P // connecting the variable to the parameter. This declaration causes parameter P (as an argument) to be treated as the principal amount inside the for loop.
+        let periods = N*12 // connecting the variable to the parameter. This declaration functions as per P, save that it gets multiplied by the amount of months in a year.
+        const name = "Mars" // my name. Not a common one. 
         
         let monthlyRate = principal * (monthlyVary * Math.pow(1 + monthlyVary, periods)) / (Math.pow(1 + monthlyVary, periods) - 1) //declaring monthlyRate and the formula for how we get it
         
@@ -160,6 +163,7 @@ function variableInterestRateNightmare(P, I, N){ //we declare our function and p
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
