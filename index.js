@@ -67,7 +67,6 @@ function mortgageCalculator(){
 
 
 
-
 // 🏡 Task 4: Arguments and Parameters
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
 
@@ -75,7 +74,18 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-
+function mortgageCalculatorAgain(P, I, N){
+    let principal = P
+    let monthlyInterestRate = I/12
+    let periods = N*12
+    const name = "Mars"
+    
+    monthlyRate = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1)
+    
+    return console.log(name,"your monthly payment is",monthlyRate)
+    }
+    
+    mortgageCalculatorAgain(200000,0.05,30)
 
 
 
