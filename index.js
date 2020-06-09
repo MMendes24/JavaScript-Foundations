@@ -130,23 +130,23 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-function mortgageCalculatorAgain(P, I, N){
-    let monthlyInterestRate = I - .02
+function variableInterestRateNightmare(P, I, N){ //we declare our function and parameters
+    let InterestRate = I - .02 // we leave this variable outside so it's not getting recalculated by the for loop
     
-    for (let i = 0; i < 10; i++) {
-        let monthlyVary = monthlyInterestRate/12
-        let principal = P
-        let periods = N*12
-        const name = "Mars"
+    for (let i = 0; i < 10; i++) { // the start of the for loop. We have made it run 10 times.
+        let monthlyVary = InterestRate/12 // our for loop needs to know the monthly interest
+        let principal = P // connecting the variable to the parameter
+        let periods = N*12 // connecting the variable to the parameter
+        const name = "Mars" // my name
         
-        monthlyRate = principal * (monthlyVary * Math.pow(1 + monthlyVary, periods)) / (Math.pow(1 + monthlyVary, periods) - 1)
+        let monthlyRate = principal * (monthlyVary * Math.pow(1 + monthlyVary, periods)) / (Math.pow(1 + monthlyVary, periods) - 1) //declaring monthlyRate and the formula for how we get it
         
-        console.log(name,"with an interest rate of",monthlyInterestRate.toFixed(3),"our monthly rate is",monthlyRate)
-        monthlyInterestRate = monthlyInterestRate + 0.005
+        console.log(name,"with an interest rate of",InterestRate.toFixed(3),"% your monthly rate is $"+monthlyRate.toFixed(0)) //console.logging our results so we know our output
+        InterestRate = InterestRate + 0.005 // we need to increment our interest rate each time. This is a way do it!
         }
     }
     
-    mortgageCalculatorAgain(200000,0.04,30)
+    variableInterestRateNightmare(200000,0.04,30)
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
